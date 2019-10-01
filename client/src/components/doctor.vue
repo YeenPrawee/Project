@@ -1,9 +1,29 @@
 <template>
     <v-container>
+    <div v-if="saveUSC">
+      <v-alert outlined dense text type="warning" prominent border="left">
+        <strong>ไม่สามารถบันทึกได้</strong> โปรดตรวจสอบข้อมูลอีกครั้ง
+      </v-alert>
+    </div>
+
+    <div v-if="saveSC">
+      <v-alert dense outlined text prominent type="success">บันทึกข้อมูลสำเร็จ</v-alert>
+    </div>
         <div>
             <h1 class = "display-2" text--left>ทะเบียนประวัติแพทย์</h1> <br>
             
         <v-form v-model="valid" ref="form">
+            <v-col cols="12" md="6">
+                    <v-text-field 
+                    label="รหัสบัตรประจำตัวประชาชน"
+                    v-model="id_card"
+                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+                    required
+                    counter
+                    maxlength="13"
+                    ></v-text-field>
+            </v-col>
+
             <v-row>
                 <v-col cols="12" md="2">
                     <v-select 
@@ -57,10 +77,10 @@
                     :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
                     required
                     ></v-text-field>
-                </v-col>
-                
+                </v-col>                
             </v-row>
-                <v-col cols="12" md="5">
+            <v-row>
+                <v-col cols="12" md="4">
                     <v-select 
                     label="จังหวัด"
                     v-model="doctorprofile.provinceId"
@@ -75,14 +95,24 @@
 
                 <v-col cols="12" md="6">
                     <v-text-field 
-                        label="ที่อยู่ปัจจุบัน"
+                        label="ที่อยู่"
                         v-model="address"
                         :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
                      required
                     ></v-text-field>
                  </v-col>
+            </v-row>
+
             <v-row>
-                
+                <v-col cols="12" md="5">
+                    <v-text-field 
+                    label="จบการศึกษาจาก"
+                    v-model="graduate"
+                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+                    required
+                    ></v-text-field>
+                </v-col>
+
                 <v-col cols="12" md="5">
                     <v-select 
                     label="ความเชี่ยวชาญ"
@@ -95,18 +125,8 @@
                     
                     ></v-select>
                 </v-col>
-
-                <v-col cols="12" md="5">
-                    <v-text-field 
-                    label="จบการศึกษาจาก"
-                    v-model="graduate"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required
-                    ></v-text-field>
-                </v-col>
             </v-row>
 
-         
             <v-col cols="12" md="6">
                 <v-textarea
                 v-model="exp"
@@ -116,11 +136,10 @@
                 required                
                 ></v-textarea>
             </v-col>
-
-            
     
             <div class="text-center">
                 <v-btn @click="saveDoctors" :class="{red : !valid,green : valid}" color="darken-2" dark >SAVE</v-btn>
+                <v-btn style="margin-left: 15px;" @click="clear">clear</v-btn>
             </div>
 
         </v-form>
@@ -149,7 +168,11 @@ export default {
             exp:"",
             graduate:"",
             address:"",
+            id_card:"",
+            saveSC:true,
+            saveUSC:false,
             valid: false,
+            
             title:[],
             sex:[],
             expertise:[],
@@ -207,8 +230,9 @@ export default {
             });
         },
         clear() {
-      this.$refs.form.reset();
-    
+            this.$refs.form.reset();
+            this.saveSC=false;
+            this.saveUSC=false;
         },
 
         // function เมื่อกดปุ่ม save
@@ -222,6 +246,7 @@ export default {
           + "/" + this.fname
           + "/" + this.graduate
           + "/" + this.lname
+          + "/" + this.id_card
           + "/" + this.doctorprofile.expertiseId
           + "/" + this.doctorprofile.sexId
           + "/" + this.doctorprofile.titleId 
@@ -229,10 +254,13 @@ export default {
         )
        .then(response => {
           console.log(response);
-          
+          this.saveSC=true;
+          this.saveUSC=false;
         })
         .catch(e => {
           console.log(e);
+          this.saveSC=false;
+          this.saveUSC=true;
         });
       this.submitted = true;
     },

@@ -58,7 +58,7 @@ public class DoctorProfileC {
         return profileR.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping("/doctorprofile/{address}/{age}/{exp}/{fname}/{graduate}/{lname}/{expertise_id}/{sex_id}/{title_id}/{province_id}")
+    @PostMapping("/doctorprofile/{address}/{age}/{exp}/{fname}/{graduate}/{lname}/{id_card}/{expertise_id}/{sex_id}/{title_id}/{province_id}")
     public DoctorProfile newProfile(DoctorProfile newProfile,
     @PathVariable String address,
     @PathVariable Integer age,
@@ -66,6 +66,7 @@ public class DoctorProfileC {
     @PathVariable String fname,
     @PathVariable String graduate,
     @PathVariable String lname,
+    @PathVariable long id_card,
     @PathVariable long title_id,
     @PathVariable long expertise_id,
     @PathVariable long sex_id,

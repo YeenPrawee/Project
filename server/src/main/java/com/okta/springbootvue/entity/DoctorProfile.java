@@ -10,6 +10,8 @@ import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,6 +32,8 @@ public class DoctorProfile {
     @Column(name = "DoctorProfile_ID", unique = true, nullable = true)
     private @NonNull Long id;  
     
+   
+    private @NonNull long id_card;
     private @NonNull String fname;
     private @NonNull String lname;
     private @NonNull Integer age;
