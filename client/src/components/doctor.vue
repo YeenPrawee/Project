@@ -60,17 +60,29 @@
                 </v-col>
                 
             </v-row>
+                <v-col cols="12" md="5">
+                    <v-select 
+                    label="จังหวัด"
+                    v-model="doctorprofile.provinceId"
+                    :items="province" 
+                    item-text="province"
+                    item-value="id"
+                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+                    required 
+                    
+                    ></v-select>
+                </v-col>
 
-            <v-col cols="12" md="10">
-                <v-text-field 
-                label="ที่อยู่ปัจจุบัน"
-                v-model="address"
-                :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required
-                ></v-text-field>
-            </v-col>
-
+                <v-col cols="12" md="6">
+                    <v-text-field 
+                        label="ที่อยู่ปัจจุบัน"
+                        v-model="address"
+                        :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+                     required
+                    ></v-text-field>
+                 </v-col>
             <v-row>
+                
                 <v-col cols="12" md="5">
                     <v-select 
                     label="ความเชี่ยวชาญ"
@@ -105,18 +117,7 @@
                 ></v-textarea>
             </v-col>
 
-            <v-col cols="12" md="5">
-                    <v-select 
-                    label="จังหวัด"
-                    v-model="doctorprofile.provinceId"
-                    :items="province" 
-                    item-text="province"
-                    item-value="id"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required 
-                    
-                    ></v-select>
-                </v-col>
+            
     
             <div class="text-center">
                 <v-btn @click="saveDoctors" :class="{red : !valid,green : valid}" color="darken-2" dark >SAVE</v-btn>
