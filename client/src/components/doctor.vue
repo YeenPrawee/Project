@@ -104,6 +104,19 @@
                 required                
                 ></v-textarea>
             </v-col>
+
+            <v-col cols="12" md="5">
+                    <v-select 
+                    label="จังหวัด"
+                    v-model="doctorprofile.provinceId"
+                    :items="province" 
+                    item-text="province"
+                    item-value="id"
+                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+                    required 
+                    
+                    ></v-select>
+                </v-col>
     
             <div class="text-center">
                 <v-btn @click="saveDoctors" :class="{red : !valid,green : valid}" color="darken-2" dark >SAVE</v-btn>
@@ -127,7 +140,7 @@ export default {
                 titleId: "",
                 sexId:"",
                 expertiseId:"",
-                
+                provinceId:"",
             },
             fname:"",
             lname:"",
@@ -139,7 +152,7 @@ export default {
             title:[],
             sex:[],
             expertise:[],
-
+            province:[],
         };
     },
     methods:{
@@ -181,6 +194,17 @@ export default {
             console.log(e);
             });
         },
+        getProvince() {
+        http
+            .get("/province")
+            .then(response => {
+            this.province = response.data;
+            console.log(response.data);
+            })
+            .catch(e => {
+            console.log(e);
+            });
+        },
         clear() {
       this.$refs.form.reset();
     
@@ -200,6 +224,7 @@ export default {
           + "/" + this.doctorprofile.expertiseId
           + "/" + this.doctorprofile.sexId
           + "/" + this.doctorprofile.titleId 
+          + "/" + this.doctorprofile.provinceId
         )
        .then(response => {
           console.log(response);
@@ -214,6 +239,7 @@ export default {
         this.getTitle();
         this.getSex();
         this.getExpertise();
+        this.getProvince();
         },
         /* eslint-enable no-console */
     },
@@ -222,6 +248,7 @@ export default {
         this.getTitle();
         this.getSex();
         this.getExpertise();
+        this.getProvince();
     }
 };
 </script>

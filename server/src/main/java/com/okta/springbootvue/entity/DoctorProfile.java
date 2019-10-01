@@ -48,4 +48,8 @@ public class DoctorProfile {
     @ManyToOne(fetch =  FetchType.EAGER, targetEntity = Sex.class)
     @JoinColumn(name = "Sex_ID",insertable = true)
     private Sex sex;
+
+    @ManyToOne(fetch =  FetchType.EAGER, targetEntity = Province.class)
+    @JoinColumn(name = "Province_ID",insertable = true)
+    private Province province;
 }

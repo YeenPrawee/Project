@@ -5,9 +5,11 @@ import java.util.stream.Stream;
 import com.okta.springbootvue.entity.Title;
 import com.okta.springbootvue.entity.Expertise;
 import com.okta.springbootvue.entity.Sex;
+import com.okta.springbootvue.entity.Province;
 import com.okta.springbootvue.repository.TitleR;
 import com.okta.springbootvue.repository.ExpertiseR;
 import com.okta.springbootvue.repository.SexR;
+import com.okta.springbootvue.repository.ProvinceR;
 
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +25,7 @@ public class SpringBootVueApplication {
 
 	@Bean
     ApplicationRunner init(TitleR titleRepository, ExpertiseR expertiseRepository,
-                            SexR sexRepository){
+                            SexR sexRepository, ProvinceR provinceRepository){
 		return args -> {
 			Stream.of("นายแพทย์","แพทย์หญิง").forEach(TitleNames-> {
 				Title title = new Title();
@@ -43,9 +45,22 @@ public class SpringBootVueApplication {
 				sexRepository.save(sex);
 			});
 
+			Stream.of("กรุงเทพมหานคร", "กระบี่", "กาญจนบุรี", "กาฬสินธุ์", "กำแพงเพชร", "ขอนแก่น", "จันทบุรี", "ฉะเชิงเทรา", "ชลบุรี", "ชัยนาท"
+			, "ชัยภูมิ", "ชุมพร", "เชียงราย", "เชียงใหม่", "ตรัง", "ตราด", "ตาก", "นครนายก", "นครปฐม", "นครพนม", "นครราชสีมา", "นครศรีธรรมราช"
+			, "นครสวรรค์", "นนทบุรี", "นราธิวาส", "น่าน", "บึงกาฬ", "บุรีรัมย์", "ปทุมธานี", "ประจวบคีรีขันธ์", "ปราจีนบุรี", "ปัตตานี", "พระนครศรีอยุธยา"
+			, "พังงา", "พัทลุง", "พิจิตร", "พิษณุโลก", "เพชรบุรี", "เพชรบูรณ์", "แพร่", "พะเยา", "ภูเก็ต", "มหาสารคาม", "มุกดาหาร", "แม่ฮ่องสอน"
+			, "ยะลา", "ยโสธร", "ร้อยเอ็ด", "ระนอง", "ระยอง", "ราชบุรี", "ลพบุรี", "ลำปาง", "ลำพูน", "เลย", "ศรีสะเกษ", "สกลนคร", "สงขลา", "สตูล"
+			, "สมุทรปราการ", "สมุทรสงคราม", "สมุทรสาคร", "สระแก้ว", "สระบุรี", "สิงห์บุรี", "สุโขทัย", "สุพรรณบุรี", "สุราษฎร์ธานี", "สุรินทร์", "หนองคาย"
+			, "หนองบัวลำภู", "อ่างทอง", "อุดรธานี", "อุทัยธานี", "อุตรดิตถ์", "อุบลราชธานี", "อำนาจเจริญ").forEach(provinces -> {
+				Province province = new Province();
+				province.setProvince(provinces);
+				provinceRepository.save(province);
+			});
+
 			titleRepository.findAll().forEach(System.out::println);
 			expertiseRepository.findAll().forEach(System.out::println);
 			sexRepository.findAll().forEach(System.out::println);
+			provinceRepository.findAll().forEach(System.out::println);
 		};
 	}
 }

@@ -25,10 +25,12 @@ import com.okta.springbootvue.entity.DoctorProfile;
 import com.okta.springbootvue.entity.Title;
 import com.okta.springbootvue.entity.Expertise;
 import com.okta.springbootvue.entity.Sex;
+import com.okta.springbootvue.entity.Province;
 import com.okta.springbootvue.repository.DoctorProfileR;
 import com.okta.springbootvue.repository.TitleR;
 import com.okta.springbootvue.repository.ExpertiseR;
 import com.okta.springbootvue.repository.SexR;
+import com.okta.springbootvue.repository.ProvinceR;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -44,6 +46,8 @@ public class DoctorProfileC {
     private ExpertiseR expertiseR;
     @Autowired
     private SexR sexR;
+    @Autowired
+    private ProvinceR provinceR;
 
     DoctorProfileC(DoctorProfileR profileR) {
         this.profileR = profileR;
@@ -54,7 +58,7 @@ public class DoctorProfileC {
         return profileR.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping("/doctorprofile/{address}/{age}/{exp}/{fname}/{graduate}/{lname}/{expertise_id}/{sex_id}/{title_id}")
+    @PostMapping("/doctorprofile/{address}/{age}/{exp}/{fname}/{graduate}/{lname}/{expertise_id}/{sex_id}/{title_id}/{province_id}")
     public DoctorProfile newProfile(DoctorProfile newProfile,
     @PathVariable String address,
     @PathVariable Integer age,
@@ -64,16 +68,19 @@ public class DoctorProfileC {
     @PathVariable String lname,
     @PathVariable long title_id,
     @PathVariable long expertise_id,
-    @PathVariable long sex_id) {
+    @PathVariable long sex_id,
+    @PathVariable long province_id
+    ) {
 
     Title title = titleR.findById(title_id);
     Expertise expertise = expertiseR.findById(expertise_id);
     Sex sex = sexR.findById(sex_id);
-    
+    Province province = provinceR.findById(province_id);
+   
     newProfile.setTitle(title);
     newProfile.setExpertise(expertise);
     newProfile.setSex(sex);
-    
+    newProfile.setProvince(province);
 
     return profileR.save(newProfile); 
     
