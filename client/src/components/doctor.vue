@@ -70,7 +70,7 @@
                     ></v-select>
                 </v-col>
 
-                <v-col >
+                <v-col col = "12" md = "5">
                     <v-menu
                         v-model="menu1"
                         :close-on-content-click="false"
@@ -96,7 +96,7 @@
                     </v-menu>
                 </v-col>
 
-                <v-col cols="12" md="1">
+                <v-col cols="12" md="2">
                     <v-text-field 
                     label="อายุ" 
                     suffix="ปี"
@@ -205,7 +205,7 @@ export default {
             saveSC:"",
             saveUSC:"",
             valid: false,
-                        
+
             menu: false,
             modal: false,
             menu2: false,
@@ -305,12 +305,7 @@ export default {
         });
       this.submitted = true;
     },
-        refreshList() {
-        this.getTitle();
-        this.getSex();
-        this.getExpertise();
-        this.getProvince();
-        },
+        
         /* eslint-enable no-console */
     },
     

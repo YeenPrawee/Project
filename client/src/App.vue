@@ -6,13 +6,7 @@
         <span class="font-weight-light"> information system</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        
-      </v-btn>
+      
     </v-app-bar>
 
     <v-content>
