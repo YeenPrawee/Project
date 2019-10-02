@@ -202,8 +202,8 @@ export default {
             graduate:"",
             address:"",
             id_card:"",
-            saveSC:"",
-            saveUSC:"",
+            saveSC:false,
+            saveUSC:false,
             valid: false,
 
             menu: false,
