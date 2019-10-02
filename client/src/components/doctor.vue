@@ -1,16 +1,18 @@
 <template>
     <v-container>
-    <div v-if="saveUSC">
-      <v-alert outlined dense text type="warning" prominent border="left">
-        <strong>ไม่สามารถบันทึกได้</strong> โปรดตรวจสอบข้อมูลอีกครั้ง
-      </v-alert>
-    </div>
+        <div v-if="saveUSC">
+            <v-alert outlined dense text type="warning" prominent border="left">
+                <strong>ไม่สามารถบันทึกได้</strong> โปรดตรวจสอบข้อมูลอีกครั้ง
+        </v-alert>
+        </div>
 
-    <div v-if="saveSC">
-      <v-alert dense outlined text prominent type="success">บันทึกข้อมูลสำเร็จ</v-alert>
-    </div>
+        <div v-if="saveSC">
+            <v-alert dense outlined text prominent type="success">บันทึกข้อมูลสำเร็จ</v-alert>
+        </div>
+
         <div>
-            <h1 class = "display-2" text--left>ทะเบียนประวัติแพทย์</h1> <br>
+            
+        <h1 class = "display-2" text--left>ทะเบียนประวัติแพทย์</h1> <br>
             
         <v-form v-model="valid" ref="form">
             <v-col cols="12" md="6">
@@ -33,8 +35,7 @@
                     item-text="title"
                     item-value="id"
                     :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required
-                     
+                    required  
                     ></v-select>
                 </v-col>
 
@@ -56,6 +57,7 @@
                     ></v-text-field>
                 </v-col>
             </v-row>
+
             <v-row>
                 <v-col cols="12" md="2">
                     <v-select 
@@ -66,7 +68,6 @@
                     item-value="id"
                     :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
                     required 
-                    
                     ></v-select>
                 </v-col>
 
@@ -88,8 +89,9 @@
                             locale="th"
                             ></v-text-field>
                         </template>
+                        
                         <v-date-picker
-                        locale="th"
+                            locale="th"
                             v-model="birthday"
                             @change="menu1 = false"
                         ></v-date-picker>
@@ -106,6 +108,7 @@
                     ></v-text-field>
                 </v-col>                
             </v-row>
+
             <v-row>
                 <v-col cols="12" md="4">
                     <v-select 
@@ -122,10 +125,10 @@
 
                 <v-col cols="12" md="6">
                     <v-text-field 
-                        label="ที่อยู่"
-                        v-model="address"
-                        :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                     required
+                    label="ที่อยู่"
+                    v-model="address"
+                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
+                    required
                     ></v-text-field>
                  </v-col>
             </v-row>
@@ -149,7 +152,6 @@
                     item-value="id"
                     :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
                     required 
-                    
                     ></v-select>
                 </v-col>
             </v-row>
@@ -170,11 +172,9 @@
             </div>
 
         </v-form>
-
         </div>
     </v-container>
 </template>
-
 
 <script>
 import http from "../http-common"
@@ -219,6 +219,8 @@ export default {
         };
     },
     methods:{
+
+
         /* eslint-disable no-console */
         
         // ดึงข้อมูล Title ใส่ combobox
@@ -233,7 +235,7 @@ export default {
             console.log(e);
             });
         },
-        // ดึงข้อมูล sex ใส่ combobox
+        // ดึงข้อมูล Sex ใส่ combobox
         getSex() {
         http
             .get("/sex")
@@ -245,7 +247,7 @@ export default {
             console.log(e);
             });
         },
-        // ดึงข้อมูล expertise ใส่ combobox
+        // ดึงข้อมูล Expertise ใส่ combobox
         getExpertise() {
         http
             .get("/expertise")
@@ -257,6 +259,7 @@ export default {
             console.log(e);
             });
         },
+        // ดึงข้อมูล Province ใส่ combobox
         getProvince() {
         http
             .get("/province")
@@ -277,8 +280,8 @@ export default {
 
         // function เมื่อกดปุ่ม save
         saveDoctors() {
-      console.log(this.doctors);
-      http
+            console.log(this.doctors);
+            http
         .post(
           "/doctorprofile/" + this.address
           + "/" + this.age
