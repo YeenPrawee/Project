@@ -168,7 +168,6 @@
     
             <div class="text-center">
                 <v-btn @click="saveDoctors" :class="{red : !valid,green : valid}" color="darken-2" dark >SAVE</v-btn>
-                <v-btn style="margin-left: 15px;" @click="clear">clear</v-btn>
             </div>
 
         </v-form>
@@ -204,8 +203,8 @@ export default {
             id_card:"",
             saveSC:false,
             saveUSC:false,
-            valid: false,
-
+            valid:false,
+            
             menu: false,
             modal: false,
             menu2: false,
@@ -273,7 +272,6 @@ export default {
         },
         
         clear() {
-            this.$refs.form.reset();
             this.saveSC=false;
             this.saveUSC=false;
         },

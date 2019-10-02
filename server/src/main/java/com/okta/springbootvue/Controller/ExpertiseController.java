@@ -1,7 +1,7 @@
 package com.okta.springbootvue.Controller;
 
-import com.okta.springbootvue.entity.Sex;
-import com.okta.springbootvue.repository.SexR;
+import com.okta.springbootvue.entity.Expertise;
+import com.okta.springbootvue.repository.ExpertiseR;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-public class SexC {
+public class ExpertiseController {
 
     @Autowired
-    private final SexR sexR;
+    private final ExpertiseR expertiseR;
 
-    public SexC(SexR sexR) {
-        this.sexR = sexR;
+    public ExpertiseController(ExpertiseR expertiseR) {
+        this.expertiseR = expertiseR;
     }
 
-    @GetMapping("/sex")
-    public Collection<Sex> Sexs() {
-        return sexR.findAll().stream().collect(Collectors.toList());
+    @GetMapping("/expertise")
+    public Collection<Expertise> Expertises() {
+        return expertiseR.findAll().stream().collect(Collectors.toList());
     }
 
 }

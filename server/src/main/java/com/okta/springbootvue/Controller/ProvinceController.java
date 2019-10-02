@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
-public class ProvinceC {
+public class ProvinceController {
 
     @Autowired
     private final ProvinceR provinceR;
 
-    public ProvinceC(ProvinceR provinceR) {
+    public ProvinceController(ProvinceR provinceR) {
         this.provinceR = provinceR;
     }
 

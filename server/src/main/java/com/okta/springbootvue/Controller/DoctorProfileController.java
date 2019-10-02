@@ -37,7 +37,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin(origins = "http://localhost:8080")
 @RestController
 
-public class DoctorProfileC {
+public class DoctorProfileController {
     @Autowired
     private final DoctorProfileR profileR;
     @Autowired
@@ -49,7 +49,7 @@ public class DoctorProfileC {
     @Autowired
     private ProvinceR provinceR;
 
-    DoctorProfileC(DoctorProfileR profileR) {
+    DoctorProfileController(DoctorProfileR profileR) {
         this.profileR = profileR;
     }
 
