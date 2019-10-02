@@ -33,8 +33,7 @@ public class DoctorProfile {
     private @NonNull Long id;  
    
     private @NonNull long id_card;
-    private @NonNull String fname;
-    private @NonNull String lname;
+    private @NonNull String name;
     private @NonNull Date birthday;
     private @NonNull Integer age;
     private @NonNull String address;

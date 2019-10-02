@@ -36,19 +36,11 @@
                     ></v-select>
                 </v-col>
 
-                <v-col cols="12" md="4">
+                <v-col cols="12" md="8">
                     <v-text-field 
-                    label="ชื่อ"
-                    v-model="fname"
+                    label="ชื่อ-สกุล"
+                    v-model="name"
                     
-                    ></v-text-field>
-                </v-col>
-
-                <v-col cols="12" md="4">
-                    <v-text-field 
-                    label="นามสกุล"
-                    v-model="lname"
-                          
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -182,8 +174,7 @@ export default {
                 expertiseId:"",
                 provinceId:"",
             },
-            fname:"",
-            lname:"",
+            name:"",
             age:"",
             exp:"",
             graduate:"",
@@ -273,9 +264,8 @@ export default {
           + "/" + this.age
           + "/" + this.birthday
           + "/" + this.exp
-          + "/" + this.fname
           + "/" + this.graduate
-          + "/" + this.lname
+          + "/" + this.name
           + "/" + this.id_card
           + "/" + this.doctorprofile.expertiseId
           + "/" + this.doctorprofile.sexId

@@ -58,15 +58,14 @@ public class DoctorProfileController {
         return profileR.findAll().stream().collect(Collectors.toList());
     }
 
-    @PostMapping("/doctorprofile/{address}/{age}/{birthday}/{exp}/{fname}/{graduate}/{lname}/{id_card}/{expertise_id}/{sex_id}/{title_id}/{province_id}")
+    @PostMapping("/doctorprofile/{address}/{age}/{birthday}/{exp}/{graduate}/{name}/{id_card}/{expertise_id}/{sex_id}/{title_id}/{province_id}")
     public DoctorProfile newProfile(DoctorProfile newProfile,
     @PathVariable String address,
     @PathVariable Integer age,
     @PathVariable String exp,
-    @PathVariable String fname,
     @PathVariable Date birthday,
     @PathVariable String graduate,
-    @PathVariable String lname,
+    @PathVariable String name,
     @PathVariable long id_card,
     @PathVariable long title_id,
     @PathVariable long expertise_id,
