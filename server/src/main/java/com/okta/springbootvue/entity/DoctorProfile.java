@@ -27,7 +27,7 @@ import javax.persistence.FetchType;
 public class DoctorProfile {
 
     @Id
-    @SequenceGenerator(name = "DoctorProfile_SEQ", sequenceName = "DoctorProfile_SEQ",initialValue = 10000)
+    @SequenceGenerator(name = "DoctorProfile_SEQ", sequenceName = "DoctorProfile_SEQ",initialValue = 20001)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DoctorProfile_SEQ")
     @Column(name = "DoctorProfile_ID", unique = true, nullable = true)
     private @NonNull Long id;  
