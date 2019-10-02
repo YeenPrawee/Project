@@ -27,13 +27,13 @@ public class SpringBootVueApplication {
     ApplicationRunner init(TitleR titleRepository, ExpertiseR expertiseRepository,
                             SexR sexRepository, ProvinceR provinceRepository){
 		return args -> {
-			Stream.of("นายแพทย์","แพทย์หญิง").forEach(TitleNames-> {
+			Stream.of("นายแพทย์","แพทย์หญิง","เทคนิคการแพทย์","เทคนิคการแพทย์หญิง","ทันตแพทย์","ทันตแพทย์หญิง").forEach(TitleNames-> {
 				Title title = new Title();
 			    title.setTitle(TitleNames);
 				titleRepository.save(title);
 			});
 
-			Stream.of("หู ตา จมูก","กระดูก").forEach(skills-> {
+			Stream.of("หู คอ จมูก","กระดูก ข้อ","จักษุวิทยา","อายุรศาสตร์","ประสาทวิทยา","รังสีวิทยา","พยาธิวิทยา","ศัลยกรรม","กุมารเวชศาสตร์","เวชศาสตร์ฟื้นฟู","จิตเวชศาสตร์").forEach(skills-> {
 				Expertise expertise = new Expertise();
 				expertise.setExpertise(skills);
 				expertiseRepository.save(expertise);

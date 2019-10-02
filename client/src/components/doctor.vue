@@ -69,6 +69,33 @@
                     
                     ></v-select>
                 </v-col>
+
+                <v-col >
+                    <v-menu
+                        v-model="menu1"
+                        :close-on-content-click="false"
+                        full-width
+                        max-width="290"
+                        >
+                        <template v-slot:activator="{ on }">
+                            <v-text-field
+                            :value="computedDateFormattedMomentjs"
+                            clearable
+                            label="วันเกิด"
+                            readonly
+                            
+                            v-on="on"
+                            locale="th"
+                            ></v-text-field>
+                        </template>
+                        <v-date-picker
+                        locale="th"
+                            v-model="birthday"
+                            @change="menu1 = false"
+                        ></v-date-picker>
+                    </v-menu>
+                </v-col>
+
                 <v-col cols="12" md="1">
                     <v-text-field 
                     label="อายุ" 
@@ -151,8 +178,14 @@
 
 <script>
 import http from "../http-common"
+import moment from 'moment'
 
 export default {
+    computed: {
+      computedDateFormattedMomentjs () {
+        return this.birthday ? moment(this.birthday).format('dddd Do, MMMM YYYY') : ''
+      },
+    }, 
     name: "doctorprofile",
     data(){
         return{
@@ -169,10 +202,16 @@ export default {
             graduate:"",
             address:"",
             id_card:"",
-            saveSC:true,
-            saveUSC:false,
+            saveSC:"",
+            saveUSC:"",
             valid: false,
-            
+                        
+            menu: false,
+            modal: false,
+            menu2: false,
+            birthday : "",
+            menu1: false,
+
             title:[],
             sex:[],
             expertise:[],
@@ -229,6 +268,7 @@ export default {
             console.log(e);
             });
         },
+        
         clear() {
             this.$refs.form.reset();
             this.saveSC=false;
@@ -242,6 +282,7 @@ export default {
         .post(
           "/doctorprofile/" + this.address
           + "/" + this.age
+          + "/" + this.birthday
           + "/" + this.exp
           + "/" + this.fname
           + "/" + this.graduate

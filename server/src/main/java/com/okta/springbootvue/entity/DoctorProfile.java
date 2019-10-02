@@ -31,11 +31,11 @@ public class DoctorProfile {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DoctorProfile_SEQ")
     @Column(name = "DoctorProfile_ID", unique = true, nullable = true)
     private @NonNull Long id;  
-    
    
     private @NonNull long id_card;
     private @NonNull String fname;
     private @NonNull String lname;
+    private @NonNull Date birthday;
     private @NonNull Integer age;
     private @NonNull String address;
     private @NonNull String exp;

@@ -11,7 +11,7 @@
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
       >
-        <span class="mr-2">User Name:{{username}}</span>
+        
       </v-btn>
     </v-app-bar>
 
@@ -27,7 +27,7 @@
 export default {
   name: 'App',
   data: () => ({
-    username:'Prawee Yutthaweeravong'
+    
   }),
 };
 </script>
