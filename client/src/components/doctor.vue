@@ -18,9 +18,7 @@
             <v-col cols="12" md="6">
                     <v-text-field 
                     label="รหัสบัตรประจำตัวประชาชน"
-                    v-model="id_card"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required
+                    v-model="id_card"                    
                     counter
                     maxlength="13"
                     ></v-text-field>
@@ -34,8 +32,7 @@
                     :items="title"                
                     item-text="title"
                     item-value="id"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required  
+                     
                     ></v-select>
                 </v-col>
 
@@ -43,8 +40,7 @@
                     <v-text-field 
                     label="ชื่อ"
                     v-model="fname"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required
+                    
                     ></v-text-field>
                 </v-col>
 
@@ -52,8 +48,7 @@
                     <v-text-field 
                     label="นามสกุล"
                     v-model="lname"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required      
+                          
                     ></v-text-field>
                 </v-col>
             </v-row>
@@ -66,8 +61,7 @@
                     :items="sex"
                     item-text="sex"
                     item-value="id"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required 
+                     
                     ></v-select>
                 </v-col>
 
@@ -103,8 +97,7 @@
                     label="อายุ" 
                     suffix="ปี"
                     v-model="age"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required
+                    
                     ></v-text-field>
                 </v-col>                
             </v-row>
@@ -117,8 +110,7 @@
                     :items="province" 
                     item-text="province"
                     item-value="id"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required 
+                     
                     
                     ></v-select>
                 </v-col>
@@ -127,8 +119,7 @@
                     <v-text-field 
                     label="ที่อยู่"
                     v-model="address"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required
+                    
                     ></v-text-field>
                  </v-col>
             </v-row>
@@ -138,8 +129,7 @@
                     <v-text-field 
                     label="จบการศึกษาจาก"
                     v-model="graduate"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required
+                    
                     ></v-text-field>
                 </v-col>
 
@@ -150,8 +140,7 @@
                     :items="expertise" 
                     item-text="expertise"
                     item-value="id"
-                    :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                    required 
+                     
                     ></v-select>
                 </v-col>
             </v-row>
@@ -161,8 +150,7 @@
                 v-model="exp"
                 name="input-7-4"
                 label="ประวัติการทำงาน"
-                :rules="[(v) => !!v || 'กรุณากรอกข้อมูล']"
-                required                
+                                
                 ></v-textarea>
             </v-col>
     
